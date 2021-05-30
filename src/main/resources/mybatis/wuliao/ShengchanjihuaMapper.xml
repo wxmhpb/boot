@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.wuliao.dao.ShengchanjihuaDao">
+
+
+	<select id="get" resultType="com.bootdo.wuliao.domain.ShengchanjihuaDO">
+		select `ID`,`LuCi`,`JiHao`,`NianYueRi`,`RiQiShiJian`,`BanCi`,`ZhongLei`,`ShuLiang`,`ZhuangTai`,`BeiZhu` from tb_shengchanjihua where ID = #{value}
+	</select>
+
+	<select id="queryList" resultType="com.bootdo.wuliao.domain.ShengchanjihuaDO" parameterType="java.lang.Integer">
+	select  A.ID, A.BanCi
+	from tb_shengchanjihua AS A
+
+	</select>
+	<select id="queryList1" resultType="com.bootdo.wuliao.domain.ShengchanjihuaDO" parameterType="java.lang.Integer">
+	select  B.ID, B.ZhongLei
+	from tb_shengchanjihua AS B
+
+	</select>
+
+	<select id="list" resultType="com.bootdo.wuliao.domain.ShengchanjihuaDO">
+		select `ID`,`LuCi`,`JiHao`,`NianYueRi`,`RiQiShiJian`,`BanCi`,`ZhongLei`,`ShuLiang`,`ZhuangTai`,`BeiZhu` from tb_shengchanjihua
+        <where>  
+		  		  <if test="id != null and id != ''"> and ID = #{id} </if>
+		  		  <if test="luci != null and luci != ''"> and LuCi = #{luci} </if>
+			      <if test="jihao != null and jihao != ''"> and JiHao = #{jihao} </if>
+		  		  <if test="nianyueri != null and nianyueri != ''"> and NianYueRi = #{nianyueri} </if>
+		  		  <if test="riqishijian != null and riqishijian != ''"> and RiQiShiJian = #{riqishijian} </if>
+		  		  <if test="banci != null and banci != ''"> and BanCi = #{banci} </if>
+		  		  <if test="zhonglei != null and zhonglei != ''"> and ZhongLei = #{zhonglei} </if>
+		  		  <if test="shuliang != null and shuliang != ''"> and ShuLiang = #{shuliang} </if>
+		  		  <if test="zhuangtai != null and zhuangtai != ''"> and ZhuangTai = #{zhuangtai} </if>
+		  		  <if test="beizhu != null and beizhu != ''"> and BeiZhu = #{beizhu} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by ID asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from tb_shengchanjihua
+		 <where>  
+		  		  <if test="id != null and id != ''"> and ID = #{id} </if>
+		  		  <if test="luci != null and luci != ''"> and LuCi = #{luci} </if>
+			 <if test="jihao != null and jihao != ''"> and JiHao = #{jihao} </if>
+		  		  <if test="nianyueri != null and nianyueri != ''"> and NianYueRi = #{nianyueri} </if>
+		  		  <if test="riqishijian != null and riqishijian != ''"> and RiQiShiJian = #{riqishijian} </if>
+		  		  <if test="banci != null and banci != ''"> and BanCi = #{banci} </if>
+		  		  <if test="zhonglei != null and zhonglei != ''"> and ZhongLei = #{zhonglei} </if>
+		  		  <if test="shuliang != null and shuliang != ''"> and ShuLiang = #{shuliang} </if>
+		  		  <if test="zhuangtai != null and zhuangtai != ''"> and ZhuangTai = #{zhuangtai} </if>
+		  		  <if test="beizhu != null and beizhu != ''"> and BeiZhu = #{beizhu} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.wuliao.domain.ShengchanjihuaDO" useGeneratedKeys="true" keyProperty="id">
+		insert into tb_shengchanjihua
+		(
+			`LuCi`,
+			`JiHao`,
+			`NianYueRi`, 
+			`RiQiShiJian`, 
+			`BanCi`, 
+			`ZhongLei`, 
+			`ShuLiang`, 
+			`ZhuangTai`, 
+			`BeiZhu`
+		)
+		values
+		(
+			#{luci},
+			#{jihao} ,
+			#{nianyueri}, 
+			#{riqishijian}, 
+			#{banci}, 
+			#{zhonglei}, 
+			#{shuliang}, 
+			#{zhuangtai}, 
+			#{beizhu}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.wuliao.domain.ShengchanjihuaDO">
+		update tb_shengchanjihua 
+		<set>
+			<if test="luci != null">`LuCi` = #{luci}, </if>
+			<if test="jihao != null">`JiHao` = #{jihao}, </if>
+			<if test="nianyueri != null">`NianYueRi` = #{nianyueri}, </if>
+			<if test="riqishijian != null">`RiQiShiJian` = #{riqishijian}, </if>
+			<if test="banci != null">`BanCi` = #{banci}, </if>
+			<if test="zhonglei != null">`ZhongLei` = #{zhonglei}, </if>
+			<if test="shuliang != null">`ShuLiang` = #{shuliang}, </if>
+			<if test="zhuangtai != null">`ZhuangTai` = #{zhuangtai}, </if>
+			<if test="beizhu != null">`BeiZhu` = #{beizhu}</if>
+		</set>
+		where ID = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from tb_shengchanjihua where ID = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from tb_shengchanjihua where ID in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

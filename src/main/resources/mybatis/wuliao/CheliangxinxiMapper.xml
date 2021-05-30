@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.wuliao.dao.CheliangxinxiDao">
+
+	<select id="get" resultType="com.bootdo.wuliao.domain.CheliangxinxiDO">
+		select `ID`,`CheHao`,`ZhuangTai`,`BeiZhu` from tb_cheliangxinxi where ID = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.wuliao.domain.CheliangxinxiDO">
+		select `ID`,`CheHao`,`ZhuangTai`,`BeiZhu` from tb_cheliangxinxi
+        <where>  
+		  		  <if test="id != null and id != ''"> and ID = #{id} </if>
+		  		  <if test="chehao != null and chehao != ''"> and CheHao = #{chehao} </if>
+		  		  <if test="zhuangtai != null and zhuangtai != ''"> and ZhuangTai = #{zhuangtai} </if>
+		  		  <if test="beizhu != null and beizhu != ''"> and BeiZhu = #{beizhu} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by ID asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from tb_cheliangxinxi
+		 <where>  
+		  		  <if test="id != null and id != ''"> and ID = #{id} </if>
+		  		  <if test="chehao != null and chehao != ''"> and CheHao = #{chehao} </if>
+		  		  <if test="zhuangtai != null and zhuangtai != ''"> and ZhuangTai = #{zhuangtai} </if>
+		  		  <if test="beizhu != null and beizhu != ''"> and BeiZhu = #{beizhu} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.wuliao.domain.CheliangxinxiDO" useGeneratedKeys="true" keyProperty="id">
+		insert into tb_cheliangxinxi
+		(
+			`CheHao`, 
+			`ZhuangTai`, 
+			`BeiZhu`
+		)
+		values
+		(
+			#{chehao}, 
+			#{zhuangtai}, 
+			#{beizhu}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.wuliao.domain.CheliangxinxiDO">
+		update tb_cheliangxinxi 
+		<set>
+			<if test="chehao != null">`CheHao` = #{chehao}, </if>
+			<if test="zhuangtai != null">`ZhuangTai` = #{zhuangtai}, </if>
+			<if test="beizhu != null">`BeiZhu` = #{beizhu}</if>
+		</set>
+		where ID = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from tb_cheliangxinxi where ID = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from tb_cheliangxinxi where ID in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

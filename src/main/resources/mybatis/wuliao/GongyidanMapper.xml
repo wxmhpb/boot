@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.wuliao.dao.GongyidanDao">
+
+	<select id="get" resultType="com.bootdo.wuliao.domain.GongyidanDO">
+		select `ID`,`GangZhongZu`,`LuCi`,`JiHao`,`CL1MingCheng`,`CL1ShuLiang`,`CL2MingCheng`,`CL2ShuLiang`,`CL3MingCheng`,`CL3ShuLiang`,`CL4MingCheng`,`CL4ShuLiang`,`CL5MingCheng`,`CL5ShuLiang`,`CL6MingCheng`,`CL6ShuLiang`,`CL7MingCheng`,`CL7ShuLiang`,`CL8MingCheng`,`CL8ShuLiang`,`CL9MingCheng`,`CL9ShuLiang`,`CL10MingCheng`,`CL10ShuLiang`,`CL11MingCheng`,`CL11ShuLiang`,`CL12MingCheng`,`CL12ShuLiang`,`CL13MingCheng`,`CL13ShuLiang`,`CL14MingCheng`,`CL14ShuLiang`,`CL15MingCheng`,`CL15ShuLiang`,`CL16MingCheng`,`CL16ShuLiang`,`CL17MingCheng`,`CL17ShuLiang`,`CL18MingCheng`,`CL18ShuLiang`,`CL19MingCheng`,`CL19ShuLiang`,`CL20MingCheng`,`CL20ShuLiang`,`ZhuangTai`,`BeiZhu` from tb_gongyidan where ID = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.wuliao.domain.GongyidanDO">
+		select `ID`,`GangZhongZu`,`LuCi`,`JiHao`,`CL1MingCheng`,`CL1ShuLiang`,`CL2MingCheng`,`CL2ShuLiang`,`CL3MingCheng`,`CL3ShuLiang`,`CL4MingCheng`,`CL4ShuLiang`,`CL5MingCheng`,`CL5ShuLiang`,`CL6MingCheng`,`CL6ShuLiang`,`CL7MingCheng`,`CL7ShuLiang`,`CL8MingCheng`,`CL8ShuLiang`,`CL9MingCheng`,`CL9ShuLiang`,`CL10MingCheng`,`CL10ShuLiang`,`CL11MingCheng`,`CL11ShuLiang`,`CL12MingCheng`,`CL12ShuLiang`,`CL13MingCheng`,`CL13ShuLiang`,`CL14MingCheng`,`CL14ShuLiang`,`CL15MingCheng`,`CL15ShuLiang`,`CL16MingCheng`,`CL16ShuLiang`,`CL17MingCheng`,`CL17ShuLiang`,`CL18MingCheng`,`CL18ShuLiang`,`CL19MingCheng`,`CL19ShuLiang`,`CL20MingCheng`,`CL20ShuLiang`,`ZhuangTai`,`BeiZhu` from tb_gongyidan
+        <where>  
+		  		  <if test="id != null and id != ''"> and ID = #{id} </if>
+			      <if test="gangzhongzu != null and gangzhongzu != ''"> and GangZhongZu = #{gangzhongzu} </if>
+			      <if test="luci != null and luci != ''"> and LuCi = #{luci} </if>
+			      <if test="jihao != null and jihao != ''"> and JiHao = #{jihao} </if>
+
+		  		  <if test="cl1mingcheng != null and cl1mingcheng != ''"> and CL1MingCheng = #{cl1mingcheng} </if>
+		  		  <if test="cl1shuliang != null and cl1shuliang != ''"> and CL1ShuLiang = #{cl1shuliang} </if>
+		  		  <if test="cl2mingcheng != null and cl2mingcheng != ''"> and CL2MingCheng = #{cl2mingcheng} </if>
+		  		  <if test="cl2shuliang != null and cl2shuliang != ''"> and CL2ShuLiang = #{cl2shuliang} </if>
+		  		  <if test="cl3mingcheng != null and cl3mingcheng != ''"> and CL3MingCheng = #{cl3mingcheng} </if>
+		  		  <if test="cl3shuliang != null and cl3shuliang != ''"> and CL3ShuLiang = #{cl3shuliang} </if>
+		  		  <if test="cl4mingcheng != null and cl4mingcheng != ''"> and CL4MingCheng = #{cl4mingcheng} </if>
+		  		  <if test="cl4shuliang != null and cl4shuliang != ''"> and CL4ShuLiang = #{cl4shuliang} </if>
+		  		  <if test="cl5mingcheng != null and cl5mingcheng != ''"> and CL5MingCheng = #{cl5mingcheng} </if>
+		  		  <if test="cl5shuliang != null and cl5shuliang != ''"> and CL5ShuLiang = #{cl5shuliang} </if>
+		  		  <if test="cl6mingcheng != null and cl6mingcheng != ''"> and CL6MingCheng = #{cl6mingcheng} </if>
+		  		  <if test="cl6shuliang != null and cl6shuliang != ''"> and CL6ShuLiang = #{cl6shuliang} </if>
+		  		  <if test="cl7mingcheng != null and cl7mingcheng != ''"> and CL7MingCheng = #{cl7mingcheng} </if>
+		  		  <if test="cl7shuliang != null and cl7shuliang != ''"> and CL7ShuLiang = #{cl7shuliang} </if>
+		  		  <if test="cl8mingcheng != null and cl8mingcheng != ''"> and CL8MingCheng = #{cl8mingcheng} </if>
+		  		  <if test="cl8shuliang != null and cl8shuliang != ''"> and CL8ShuLiang = #{cl8shuliang} </if>
+		  		  <if test="cl9mingcheng != null and cl9mingcheng != ''"> and CL9MingCheng = #{cl9mingcheng} </if>
+		  		  <if test="cl9shuliang != null and cl9shuliang != ''"> and CL9ShuLiang = #{cl9shuliang} </if>
+		  		  <if test="cl10mingcheng != null and cl10mingcheng != ''"> and CL10MingCheng = #{cl10mingcheng} </if>
+		  		  <if test="cl10shuliang != null and cl10shuliang != ''"> and CL10ShuLiang = #{cl10shuliang} </if>
+		  		  <if test="cl11mingcheng != null and cl11mingcheng != ''"> and CL11MingCheng = #{cl11mingcheng} </if>
+		  		  <if test="cl11shuliang != null and cl11shuliang != ''"> and CL11ShuLiang = #{cl11shuliang} </if>
+		  		  <if test="cl12mingcheng != null and cl12mingcheng != ''"> and CL12MingCheng = #{cl12mingcheng} </if>
+		  		  <if test="cl12shuliang != null and cl12shuliang != ''"> and CL12ShuLiang = #{cl12shuliang} </if>
+		  		  <if test="cl13mingcheng != null and cl13mingcheng != ''"> and CL13MingCheng = #{cl13mingcheng} </if>
+		  		  <if test="cl13shuliang != null and cl13shuliang != ''"> and CL13ShuLiang = #{cl13shuliang} </if>
+		  		  <if test="cl14mingcheng != null and cl14mingcheng != ''"> and CL14MingCheng = #{cl14mingcheng} </if>
+		  		  <if test="cl14shuliang != null and cl14shuliang != ''"> and CL14ShuLiang = #{cl14shuliang} </if>
+		  		  <if test="cl15mingcheng != null and cl15mingcheng != ''"> and CL15MingCheng = #{cl15mingcheng} </if>
+		  		  <if test="cl15shuliang != null and cl15shuliang != ''"> and CL15ShuLiang = #{cl15shuliang} </if>
+		  		  <if test="cl16mingcheng != null and cl16mingcheng != ''"> and CL16MingCheng = #{cl16mingcheng} </if>
+		  		  <if test="cl16shuliang != null and cl16shuliang != ''"> and CL16ShuLiang = #{cl16shuliang} </if>
+		  		  <if test="cl17mingcheng != null and cl17mingcheng != ''"> and CL17MingCheng = #{cl17mingcheng} </if>
+		  		  <if test="cl17shuliang != null and cl17shuliang != ''"> and CL17ShuLiang = #{cl17shuliang} </if>
+		  		  <if test="cl18mingcheng != null and cl18mingcheng != ''"> and CL18MingCheng = #{cl18mingcheng} </if>
+		  		  <if test="cl18shuliang != null and cl18shuliang != ''"> and CL18ShuLiang = #{cl18shuliang} </if>
+		  		  <if test="cl19mingcheng != null and cl19mingcheng != ''"> and CL19MingCheng = #{cl19mingcheng} </if>
+		  		  <if test="cl19shuliang != null and cl19shuliang != ''"> and CL19ShuLiang = #{cl19shuliang} </if>
+		  		  <if test="cl20mingcheng != null and cl20mingcheng != ''"> and CL20MingCheng = #{cl20mingcheng} </if>
+		  		  <if test="cl20shuliang != null and cl20shuliang != ''"> and CL20ShuLiang = #{cl20shuliang} </if>
+		  		  <if test="zhuangtai != null and zhuangtai != ''"> and ZhuangTai = #{zhuangtai} </if>
+		  		  <if test="beizhu != null and beizhu != ''"> and BeiZhu = #{beizhu} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by ID asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from tb_gongyidan
+		 <where>  
+		  		  <if test="id != null and id != ''"> and ID = #{id} </if>
+			 <if test="gangzhongzu != null and gangzhongzu != ''"> and GangZhongZu = #{gangzhongzu} </if>
+			 <if test="luci != null and luci != ''"> and LuCi = #{luci} </if>
+			      <if test="jihao != null and jihao != ''"> and JiHao = #{jihao} </if>
+
+		  		  <if test="cl1mingcheng != null and cl1mingcheng != ''"> and CL1MingCheng = #{cl1mingcheng} </if>
+		  		  <if test="cl1shuliang != null and cl1shuliang != ''"> and CL1ShuLiang = #{cl1shuliang} </if>
+		  		  <if test="cl2mingcheng != null and cl2mingcheng != ''"> and CL2MingCheng = #{cl2mingcheng} </if>
+		  		  <if test="cl2shuliang != null and cl2shuliang != ''"> and CL2ShuLiang = #{cl2shuliang} </if>
+		  		  <if test="cl3mingcheng != null and cl3mingcheng != ''"> and CL3MingCheng = #{cl3mingcheng} </if>
+		  		  <if test="cl3shuliang != null and cl3shuliang != ''"> and CL3ShuLiang = #{cl3shuliang} </if>
+		  		  <if test="cl4mingcheng != null and cl4mingcheng != ''"> and CL4MingCheng = #{cl4mingcheng} </if>
+		  		  <if test="cl4shuliang != null and cl4shuliang != ''"> and CL4ShuLiang = #{cl4shuliang} </if>
+		  		  <if test="cl5mingcheng != null and cl5mingcheng != ''"> and CL5MingCheng = #{cl5mingcheng} </if>
+		  		  <if test="cl5shuliang != null and cl5shuliang != ''"> and CL5ShuLiang = #{cl5shuliang} </if>
+		  		  <if test="cl6mingcheng != null and cl6mingcheng != ''"> and CL6MingCheng = #{cl6mingcheng} </if>
+		  		  <if test="cl6shuliang != null and cl6shuliang != ''"> and CL6ShuLiang = #{cl6shuliang} </if>
+		  		  <if test="cl7mingcheng != null and cl7mingcheng != ''"> and CL7MingCheng = #{cl7mingcheng} </if>
+		  		  <if test="cl7shuliang != null and cl7shuliang != ''"> and CL7ShuLiang = #{cl7shuliang} </if>
+		  		  <if test="cl8mingcheng != null and cl8mingcheng != ''"> and CL8MingCheng = #{cl8mingcheng} </if>
+		  		  <if test="cl8shuliang != null and cl8shuliang != ''"> and CL8ShuLiang = #{cl8shuliang} </if>
+		  		  <if test="cl9mingcheng != null and cl9mingcheng != ''"> and CL9MingCheng = #{cl9mingcheng} </if>
+		  		  <if test="cl9shuliang != null and cl9shuliang != ''"> and CL9ShuLiang = #{cl9shuliang} </if>
+		  		  <if test="cl10mingcheng != null and cl10mingcheng != ''"> and CL10MingCheng = #{cl10mingcheng} </if>
+		  		  <if test="cl10shuliang != null and cl10shuliang != ''"> and CL10ShuLiang = #{cl10shuliang} </if>
+		  		  <if test="cl11mingcheng != null and cl11mingcheng != ''"> and CL11MingCheng = #{cl11mingcheng} </if>
+		  		  <if test="cl11shuliang != null and cl11shuliang != ''"> and CL11ShuLiang = #{cl11shuliang} </if>
+		  		  <if test="cl12mingcheng != null and cl12mingcheng != ''"> and CL12MingCheng = #{cl12mingcheng} </if>
+		  		  <if test="cl12shuliang != null and cl12shuliang != ''"> and CL12ShuLiang = #{cl12shuliang} </if>
+		  		  <if test="cl13mingcheng != null and cl13mingcheng != ''"> and CL13MingCheng = #{cl13mingcheng} </if>
+		  		  <if test="cl13shuliang != null and cl13shuliang != ''"> and CL13ShuLiang = #{cl13shuliang} </if>
+		  		  <if test="cl14mingcheng != null and cl14mingcheng != ''"> and CL14MingCheng = #{cl14mingcheng} </if>
+		  		  <if test="cl14shuliang != null and cl14shuliang != ''"> and CL14ShuLiang = #{cl14shuliang} </if>
+		  		  <if test="cl15mingcheng != null and cl15mingcheng != ''"> and CL15MingCheng = #{cl15mingcheng} </if>
+		  		  <if test="cl15shuliang != null and cl15shuliang != ''"> and CL15ShuLiang = #{cl15shuliang} </if>
+		  		  <if test="cl16mingcheng != null and cl16mingcheng != ''"> and CL16MingCheng = #{cl16mingcheng} </if>
+		  		  <if test="cl16shuliang != null and cl16shuliang != ''"> and CL16ShuLiang = #{cl16shuliang} </if>
+		  		  <if test="cl17mingcheng != null and cl17mingcheng != ''"> and CL17MingCheng = #{cl17mingcheng} </if>
+		  		  <if test="cl17shuliang != null and cl17shuliang != ''"> and CL17ShuLiang = #{cl17shuliang} </if>
+		  		  <if test="cl18mingcheng != null and cl18mingcheng != ''"> and CL18MingCheng = #{cl18mingcheng} </if>
+		  		  <if test="cl18shuliang != null and cl18shuliang != ''"> and CL18ShuLiang = #{cl18shuliang} </if>
+		  		  <if test="cl19mingcheng != null and cl19mingcheng != ''"> and CL19MingCheng = #{cl19mingcheng} </if>
+		  		  <if test="cl19shuliang != null and cl19shuliang != ''"> and CL19ShuLiang = #{cl19shuliang} </if>
+		  		  <if test="cl20mingcheng != null and cl20mingcheng != ''"> and CL20MingCheng = #{cl20mingcheng} </if>
+		  		  <if test="cl20shuliang != null and cl20shuliang != ''"> and CL20ShuLiang = #{cl20shuliang} </if>
+		  		  <if test="zhuangtai != null and zhuangtai != ''"> and ZhuangTai = #{zhuangtai} </if>
+		  		  <if test="beizhu != null and beizhu != ''"> and BeiZhu = #{beizhu} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.wuliao.domain.GongyidanDO" useGeneratedKeys="true" keyProperty="id">
+		insert into tb_gongyidan
+		(
+		    `GangZhongZu`,
+		    `LuCi`,
+		    `JiHao`,
+			`CL1MingCheng`, 
+			`CL1ShuLiang`, 
+			`CL2MingCheng`, 
+			`CL2ShuLiang`, 
+			`CL3MingCheng`, 
+			`CL3ShuLiang`, 
+			`CL4MingCheng`, 
+			`CL4ShuLiang`, 
+			`CL5MingCheng`, 
+			`CL5ShuLiang`, 
+			`CL6MingCheng`, 
+			`CL6ShuLiang`, 
+			`CL7MingCheng`, 
+			`CL7ShuLiang`, 
+			`CL8MingCheng`, 
+			`CL8ShuLiang`, 
+			`CL9MingCheng`, 
+			`CL9ShuLiang`, 
+			`CL10MingCheng`, 
+			`CL10ShuLiang`, 
+			`CL11MingCheng`, 
+			`CL11ShuLiang`, 
+			`CL12MingCheng`, 
+			`CL12ShuLiang`, 
+			`CL13MingCheng`, 
+			`CL13ShuLiang`, 
+			`CL14MingCheng`, 
+			`CL14ShuLiang`, 
+			`CL15MingCheng`, 
+			`CL15ShuLiang`, 
+			`CL16MingCheng`, 
+			`CL16ShuLiang`, 
+			`CL17MingCheng`, 
+			`CL17ShuLiang`, 
+			`CL18MingCheng`, 
+			`CL18ShuLiang`, 
+			`CL19MingCheng`, 
+			`CL19ShuLiang`, 
+			`CL20MingCheng`, 
+			`CL20ShuLiang`, 
+			`ZhuangTai`, 
+			`BeiZhu`
+		)
+		values
+		(
+		    #{gangzhongzu},
+		    #{luci},
+		    #{jihao},
+
+			#{cl1mingcheng}, 
+			#{cl1shuliang}, 
+			#{cl2mingcheng}, 
+			#{cl2shuliang}, 
+			#{cl3mingcheng}, 
+			#{cl3shuliang}, 
+			#{cl4mingcheng}, 
+			#{cl4shuliang}, 
+			#{cl5mingcheng}, 
+			#{cl5shuliang}, 
+			#{cl6mingcheng}, 
+			#{cl6shuliang}, 
+			#{cl7mingcheng}, 
+			#{cl7shuliang}, 
+			#{cl8mingcheng}, 
+			#{cl8shuliang}, 
+			#{cl9mingcheng}, 
+			#{cl9shuliang}, 
+			#{cl10mingcheng}, 
+			#{cl10shuliang}, 
+			#{cl11mingcheng}, 
+			#{cl11shuliang}, 
+			#{cl12mingcheng}, 
+			#{cl12shuliang}, 
+			#{cl13mingcheng}, 
+			#{cl13shuliang}, 
+			#{cl14mingcheng}, 
+			#{cl14shuliang}, 
+			#{cl15mingcheng}, 
+			#{cl15shuliang}, 
+			#{cl16mingcheng}, 
+			#{cl16shuliang}, 
+			#{cl17mingcheng}, 
+			#{cl17shuliang}, 
+			#{cl18mingcheng}, 
+			#{cl18shuliang}, 
+			#{cl19mingcheng}, 
+			#{cl19shuliang}, 
+			#{cl20mingcheng}, 
+			#{cl20shuliang}, 
+			#{zhuangtai}, 
+			#{beizhu}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.wuliao.domain.GongyidanDO">
+		update tb_gongyidan 
+		<set>
+			<if test="gangzhongzu != null">`GangZhongZu` = #{gangzhongzu}, </if>
+			<if test="luci != null">`LuCi` = #{luci}, </if>
+			<if test="jihao != null">`JiHao` = #{jihao}, </if>
+
+			<if test="cl1mingcheng != null">`CL1MingCheng` = #{cl1mingcheng}, </if>
+			<if test="cl1shuliang != null">`CL1ShuLiang` = #{cl1shuliang}, </if>
+			<if test="cl2mingcheng != null">`CL2MingCheng` = #{cl2mingcheng}, </if>
+			<if test="cl2shuliang != null">`CL2ShuLiang` = #{cl2shuliang}, </if>
+			<if test="cl3mingcheng != null">`CL3MingCheng` = #{cl3mingcheng}, </if>
+			<if test="cl3shuliang != null">`CL3ShuLiang` = #{cl3shuliang}, </if>
+			<if test="cl4mingcheng != null">`CL4MingCheng` = #{cl4mingcheng}, </if>
+			<if test="cl4shuliang != null">`CL4ShuLiang` = #{cl4shuliang}, </if>
+			<if test="cl5mingcheng != null">`CL5MingCheng` = #{cl5mingcheng}, </if>
+			<if test="cl5shuliang != null">`CL5ShuLiang` = #{cl5shuliang}, </if>
+			<if test="cl6mingcheng != null">`CL6MingCheng` = #{cl6mingcheng}, </if>
+			<if test="cl6shuliang != null">`CL6ShuLiang` = #{cl6shuliang}, </if>
+			<if test="cl7mingcheng != null">`CL7MingCheng` = #{cl7mingcheng}, </if>
+			<if test="cl7shuliang != null">`CL7ShuLiang` = #{cl7shuliang}, </if>
+			<if test="cl8mingcheng != null">`CL8MingCheng` = #{cl8mingcheng}, </if>
+			<if test="cl8shuliang != null">`CL8ShuLiang` = #{cl8shuliang}, </if>
+			<if test="cl9mingcheng != null">`CL9MingCheng` = #{cl9mingcheng}, </if>
+			<if test="cl9shuliang != null">`CL9ShuLiang` = #{cl9shuliang}, </if>
+			<if test="cl10mingcheng != null">`CL10MingCheng` = #{cl10mingcheng}, </if>
+			<if test="cl10shuliang != null">`CL10ShuLiang` = #{cl10shuliang}, </if>
+			<if test="cl11mingcheng != null">`CL11MingCheng` = #{cl11mingcheng}, </if>
+			<if test="cl11shuliang != null">`CL11ShuLiang` = #{cl11shuliang}, </if>
+			<if test="cl12mingcheng != null">`CL12MingCheng` = #{cl12mingcheng}, </if>
+			<if test="cl12shuliang != null">`CL12ShuLiang` = #{cl12shuliang}, </if>
+			<if test="cl13mingcheng != null">`CL13MingCheng` = #{cl13mingcheng}, </if>
+			<if test="cl13shuliang != null">`CL13ShuLiang` = #{cl13shuliang}, </if>
+			<if test="cl14mingcheng != null">`CL14MingCheng` = #{cl14mingcheng}, </if>
+			<if test="cl14shuliang != null">`CL14ShuLiang` = #{cl14shuliang}, </if>
+			<if test="cl15mingcheng != null">`CL15MingCheng` = #{cl15mingcheng}, </if>
+			<if test="cl15shuliang != null">`CL15ShuLiang` = #{cl15shuliang}, </if>
+			<if test="cl16mingcheng != null">`CL16MingCheng` = #{cl16mingcheng}, </if>
+			<if test="cl16shuliang != null">`CL16ShuLiang` = #{cl16shuliang}, </if>
+			<if test="cl17mingcheng != null">`CL17MingCheng` = #{cl17mingcheng}, </if>
+			<if test="cl17shuliang != null">`CL17ShuLiang` = #{cl17shuliang}, </if>
+			<if test="cl18mingcheng != null">`CL18MingCheng` = #{cl18mingcheng}, </if>
+			<if test="cl18shuliang != null">`CL18ShuLiang` = #{cl18shuliang}, </if>
+			<if test="cl19mingcheng != null">`CL19MingCheng` = #{cl19mingcheng}, </if>
+			<if test="cl19shuliang != null">`CL19ShuLiang` = #{cl19shuliang}, </if>
+			<if test="cl20mingcheng != null">`CL20MingCheng` = #{cl20mingcheng}, </if>
+			<if test="cl20shuliang != null">`CL20ShuLiang` = #{cl20shuliang}, </if>
+			<if test="zhuangtai != null">`ZhuangTai` = #{zhuangtai}, </if>
+			<if test="beizhu != null">`BeiZhu` = #{beizhu}</if>
+		</set>
+		where ID = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from tb_gongyidan where ID = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from tb_gongyidan where ID in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

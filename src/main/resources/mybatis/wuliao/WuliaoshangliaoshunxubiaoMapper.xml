@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.wuliao.dao.WuliaoshangliaoshunxubiaoDao">
+
+	<!-- 关联查询两张表  -->
+	<select id="list" resultType="com.bootdo.wuliao.domain.WuliaoshangliaoshunxubiaoDO">
+	select LuCi luci,tb_gongyidan.CL1MingCheng cl1mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL1ShuLiang cl1shengyuliang,tb_gongyidan.CL2MingCheng cl2mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL2ShuLiang cl2shengyuliang,tb_gongyidan.CL3MingCheng cl3mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL3ShuLiang cl3shengyuliang,tb_gongyidan.CL4MingCheng cl4mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL4ShuLiang cl4shengyuliang,tb_gongyidan.CL5MingCheng cl5mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL5ShuLiang cl5shengyuliang,tb_gongyidan.CL6MingCheng cl6mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL6ShuLiang cl6shengyuliang,tb_gongyidan.CL7MingCheng cl7mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL7ShuLiang cl7shengyuliang,tb_gongyidan.CL8MingCheng cl8mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL8ShuLiang cl8shengyuliang,tb_gongyidan.CL9MingCheng cl9mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL9ShuLiang cl9shengyuliang,tb_gongyidan.CL10MingCheng cl10mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL10ShuLiang cl10shengyuliang,tb_gongyidan.CL11MingCheng cl11mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL11ShuLiang cl11shengyuliang,tb_gongyidan.CL12MingCheng cl12mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL12ShuLiang cl12shengyuliang,tb_gongyidan.CL13MingCheng cl13mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL13ShuLiang cl13shengyuliang,tb_gongyidan.CL14MingCheng cl14mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL14ShuLiang cl14shengyuliang,tb_gongyidan.CL15MingCheng cl15mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL15ShuLiang cl15shengyuliang,tb_gongyidan.CL16MingCheng cl16mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL16ShuLiang cl16shengyuliang,tb_gongyidan.CL17MingCheng cl17mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL17ShuLiang cl17shengyuliang,tb_gongyidan.CL18MingCheng cl18mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL18ShuLiang cl18shengyuliang,tb_gongyidan.CL19MingCheng cl19mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL19ShuLiang cl19shengyuliang,tb_gongyidan.CL20MingCheng cl20mingcheng,
+	tb_liaocang.DangQianShuLiang-tb_gongyidan.CL20ShuLiang cl20shengyuliang
+      from tb_shengchanjihua,tb_gongyidan,tb_liaocang
+      where
+     tb_shengchanjihua.JiHao=tb_gongyidan.JiHao
+	</select>
+
+	<select id="query" resultType="java.lang.String" parameterType="java.lang.String">
+       select c.LiaoCangHao,d.name
+     from tb_liaocang c, tb_wuliaoxinxi d
+     where c.DangQianPinZhong = d.id
+     and c.LiaoCangMingCheng='高位料仓'
+     and d.name = #{name};
+	 </select>
+
+
+
+	<select id="count" resultType="int">
+	select count(*)
+	from tb_liaocang,tb_shengchanjihua,tb_gongyidan,tb_wuliaoxinxi
+     where tb_liaocang.LiaoCangMingCheng='高位料仓'
+     and tb_shengchanjihua.JiHao=tb_gongyidan.JiHao
+     and tb_wuliaoxinxi.id=tb_liaocang.DangQianPinZhong
+    and tb_gongyidan.CL1MingCheng=tb_wuliaoxinxi.name;
+
+
+   </select>
+
+    <select id="get" resultType="com.bootdo.wuliao.domain.WuliaoshangliaoshunxubiaoDO">
+
+    </select>
+
+	<!--
+		查出 每个炉次的MingCheng1~MingCheng20
+		@author liangqi
+		@time 2021年1月26日
+	-->
+	<select id="LuCiAndGongYiDanList" resultType="com.bootdo.wuliao.domain.dto.GongYiDanDTO">
+		select
+			a.LuCi luci, a.ShuLiang shuliang ,b.*
+		from
+			tb_shengchanjihua a,tb_gongyidan b
+		where
+			a.JiHao = b.JiHao;
+	</select>
+
+	<!--
+		查出材料对应的 料仓号、当前数量
+		@author liangqi
+	-->
+	<select id="queryDetail" resultType="com.bootdo.wuliao.domain.dto.WuLiaoDetailDTO" parameterType="string">
+		select
+			c.LiaoCangHao liaocanghao, c.DangQianShuLiang dangqianshuliang
+		from
+			tb_liaocang c, tb_wuliaoxinxi d
+		where
+			c.DangQianPinZhong = d.id and
+			c.LiaoCangMingCheng='高位料仓' and
+			d.`name` = #{name}
+	</select>
+
+	<!--
+		查询总的记录数
+		@author liangqi
+	-->
+	<select id="count2" resultType="int">
+		select count(a.LuCi)
+		from
+			tb_shengchanjihua a,tb_gongyidan b
+		where
+			a.JiHao = b.JiHao;
+   </select>
+
+
+	<!--
+		更新 料仓表中 某个材料的剩余量
+		@author liangqi
+		@time 2021年1月26日
+	-->
+	<update id="updateLiaoCang" parameterType="com.bootdo.wuliao.domain.dto.WuLiaoDetailDTO">
+	update tb_liaocang
+	set DangQianShuLiang = #{dangqianshuliang}
+	where LiaoCangHao = #{liaocanghao}
+
+	</update>
+</mapper>

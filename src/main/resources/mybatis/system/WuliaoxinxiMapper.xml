@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.system.dao.WuliaoxinxiDao">
+
+	<!--<resultMap id="wuliaoxinxiResultMap" type="com.bootdo.system.domain.WuliaoxinxiDO">-->
+		<!--<result property="id" column="id"  javaType="int" jdbcType="int"/>-->
+		<!--<result property="name" column="name"  javaType="String" jdbcType="varchar"/>-->
+	<!--</resultMap>-->
+
+	<select id="get" resultType="com.bootdo.system.domain.WuliaoxinxiDO">
+		select `id`,`name`,`chengfen`,`shangjiid` from tb_wuliaoxinxi where id = #{value}
+	</select>
+
+	<select id="queryList" resultType="com.bootdo.system.domain.WuliaoxinxiDO" parameterType="java.lang.Integer">
+		select  A.id,A.name
+		from tb_wuliaoxinxi AS A
+        where shangjiid !=0
+
+	</select>
+
+	<select id="list" resultType="com.bootdo.system.domain.WuliaoxinxiDO">
+		select `id`, `name`,`chengfen`,`shangjiid` from tb_wuliaoxinxi
+        <where>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+			      <if test="chengfen != null and chengfen != ''"> and chengfen = #{chengfen} </if>
+			      <if test="shangjiid != null and shangjiid != ''"> and shangjiid = #{shangjiid} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from tb_wuliaoxinxi
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="name != null and name != ''"> and name = #{name} </if>
+
+			      <if test="chengfen != null and chengfen != ''"> and chengfen = #{chengfen} </if>
+			      <if test="shangjiid != null and shangjiid!=''"> and shangjiid = #{shangjiid} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.system.domain.WuliaoxinxiDO">
+		insert into tb_wuliaoxinxi
+		(
+			`id`, 
+			`name`,
+			`chengfen`,
+		    `shangjiid`
+		)
+		values
+		(
+			#{id}, 
+			#{name},
+			#{chengfen},
+		    #{shangjiid}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.system.domain.WuliaoxinxiDO">
+		update tb_wuliaoxinxi 
+		<set>
+			<if test="name != null">`name` = #{name},</if>
+			<if test="chengfen != null">`chengfen` = #{chengfen},</if>
+			<if test="shangjiid != null">`shangjiid` = #{shangjiid}, </if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from tb_wuliaoxinxi where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from tb_wuliaoxinxi where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

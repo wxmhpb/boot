@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.wuliao.dao.ChelianglahuoDao">
+
+	<select id="get" resultType="com.bootdo.wuliao.domain.ChelianglahuoDO">
+		select `ID`,`CheHao`,`LiaoCangHao`,`PinZhong`,`ShuLiang`,`RiQiShiJian`,`DangTianCheShu`,`PiCiHao`,`Chengfen`,`shifuruku`,`ZhuangTai`,`BeiZhu` from tb_chelianglahuo where ID = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.wuliao.domain.ChelianglahuoDO">
+		select `ID`,`CheHao`,`LiaoCangHao`,`PinZhong`,`ShuLiang`,`RiQiShiJian`,`DangTianCheShu`,`PiCiHao`,`Chengfen`,`shifuruku`,`LiaoCangHao`,`ZhuangTai`,`BeiZhu` from tb_chelianglahuo
+        <where>  
+		  		  <if test="id != null and id != ''"> and ID = #{id} </if>
+		  		  <if test="chehao != null and chehao != ''"> and CheHao = #{chehao} </if>
+			      <if test="liaocanghao != null and liaocanghao != ''"> and LiaoCangHao = #{liaocanghao} </if>
+		  		  <if test="pinzhong != null and pinzhong != ''"> and PinZhong = #{pinzhong} </if>
+		  		  <if test="shuliang != null and shuliang != ''"> and ShuLiang = #{shuliang} </if>
+		  		  <if test="riqishijian != null and riqishijian != ''"> and RiQiShiJian = #{riqishijian} </if>
+		  		  <if test="dangtiancheshu != null and dangtiancheshu != ''"> and DangTianCheShu = #{dangtiancheshu} </if>
+			      <if test="picihao != null and picihao!=''"> and PiCiHao = #{picihao} </if>
+			      <if test="chengfen != null and chengfen!=''">and Chengfen = #{chengfen} </if>
+			      <if test="shifuruku != null and shifuruku!=''">and shifuruku = #{shifuruku} </if>
+
+		  		  <if test="zhuangtai != null and zhuangtai != ''"> and ZhuangTai = #{zhuangtai} </if>
+		  		  <if test="beizhu != null and beizhu != ''"> and BeiZhu = #{beizhu} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by ID asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from tb_chelianglahuo
+		 <where>  
+		  		  <if test="id != null and id != ''"> and ID = #{id} </if>
+		  		  <if test="chehao != null and chehao != ''"> and CheHao = #{chehao} </if>
+			      <if test="liaocanghao != null and liaocanghao != ''"> and LiaoCangHao = #{liaocanghao} </if>
+		  		  <if test="pinzhong != null and pinzhong != ''"> and PinZhong = #{pinzhong} </if>
+		  		  <if test="shuliang != null and shuliang != ''"> and ShuLiang = #{shuliang} </if>
+		  		  <if test="riqishijian != null and riqishijian != ''"> and RiQiShiJian = #{riqishijian} </if>
+		  		  <if test="dangtiancheshu != null and dangtiancheshu != ''"> and DangTianCheShu = #{dangtiancheshu} </if>
+			      <if test="picihao != null and picihao!=''"> and PiCiHao = #{picihao} </if>
+			      <if test="chengfen != null and chengfen!=''">and Chengfen = #{chengfen} </if>
+			      <if test="shifuruku != null and shifuruku!=''">and shifuruku = #{shifuruku} </if>
+
+		  		  <if test="zhuangtai != null and zhuangtai != ''"> and ZhuangTai = #{zhuangtai} </if>
+		  		  <if test="beizhu != null and beizhu != ''"> and BeiZhu = #{beizhu} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.wuliao.domain.ChelianglahuoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into tb_chelianglahuo
+		(
+			`CheHao`,
+			`LiaoCangHao`,
+			`PinZhong`, 
+			`ShuLiang`, 
+			`RiQiShiJian`, 
+			`DangTianCheShu`,
+			`PiCiHao`,
+			`Chengfen`,
+		    `shifuruku`,
+
+			`ZhuangTai`, 
+			`BeiZhu`
+		)
+		values
+		(
+			#{chehao},
+			#{liaocanghao},
+			#{pinzhong}, 
+			#{shuliang}, 
+			#{riqishijian}, 
+			#{dangtiancheshu},
+			#{picihao},
+			#{chengfen},
+		    #{shifuruku},
+
+			#{zhuangtai}, 
+			#{beizhu}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.wuliao.domain.ChelianglahuoDO">
+		update tb_chelianglahuo 
+		<set>
+			<if test="chehao != null">`CheHao` = #{chehao}, </if>
+			<if test="liaocanghao != null">`LiaoCangHao` = #{liaocanghao}, </if>
+			<if test="pinzhong != null">`PinZhong` = #{pinzhong}, </if>
+			<if test="shuliang != null">`ShuLiang` = #{shuliang}, </if>
+			<if test="riqishijian != null">`RiQiShiJian` = #{riqishijian}, </if>
+			<if test="dangtiancheshu != null">`DangTianCheShu` = #{dangtiancheshu}, </if>
+			<if test="picihao != null">`PiCiHao` = #{picihao}, </if>
+			<if test="chengfen != null">`Chengfen` = #{chengfen}, </if>
+			<if test="shifuruku != null">`shifuruku` = #{shifuruku}, </if>
+
+			<if test="zhuangtai != null">`ZhuangTai` = #{zhuangtai}, </if>
+			<if test="beizhu != null">`BeiZhu` = #{beizhu}</if>
+		</set>
+		where ID = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from tb_chelianglahuo where ID = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from tb_chelianglahuo where ID in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

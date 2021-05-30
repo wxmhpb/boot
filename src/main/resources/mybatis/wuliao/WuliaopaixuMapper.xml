@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.wuliao.dao.WuliaopaixuDao">
+
+    <select id="get" resultType="com.bootdo.system.domain.WuliaoxinxiDO">
+        select `id`,`liaocangmingcheng`,`liaocanghao`,`pingzhong`,`dangqianshuliang` from tb_liaocang where id = #{value}
+    </select>
+
+    <select id="list" resultType="com.bootdo.wuliao.domain.WuliaopaixuDO">
+    select ID id,LiaoCangMingCheng liaocangmingcheng,LiaoCangHao liaocanghao,DangQianPinZhong pingzhong,DangQianShuLiang dangqianshuliang
+    from tb_liaocang
+    where liaocangmingcheng='高位料仓'
+    order by dangqianshuliang asc;
+</select>
+    <select id="count" resultType="int">
+        select count(*)
+        from tb_liaocang
+        where liaocangmingcheng='高位料仓'
+    </select>
+</mapper>

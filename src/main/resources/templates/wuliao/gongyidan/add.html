@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:display="http://www.w3.org/1999/xhtml">
+<meta charset="utf-8">
+<head th:include="include :: header">
+	<link rel="https://www.layuicdn.com/layui-v2.5.6/css/layui.css "/>
+	<script type="text/javascript" src="https://www.layuicdn.com/layui-v2.5.6/layui.js"></script>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<form class="form-horizontal m-t" id="gongyidan">
+						<div id="cailiao">
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">钢种组</label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="gangzhongzu" th:name="id" lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${chanpinxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-2 control-label" >炉次</label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="luci" th:name="luci" lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<!--<option th:each="b:${JihaoDO}" th:value="${b.id}" th:text="${b.name}" ></option>-->
+								</select>
+							</div>
+							<label class="col-sm-2 control-label " style="text-align: right">记号：</label>
+							<div class="col-sm-2">
+								<input id="jihao" name="luci" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+
+<!--						<div class="form-group">-->
+<!--							<label class="col-sm-2 control-label">材料类型</label>-->
+<!--							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">-->
+<!--								<select id="cailiaoleixing" th:name="id" lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">-->
+<!--									<option value="" >请选择</option>-->
+<!--									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>-->
+<!--								</select>-->
+<!--							</div>-->
+<!--							<label class="col-sm-2 control-label" >具体材料</label>-->
+<!--							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">-->
+<!--								<select id="cailiao1" th:name="id" lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">-->
+<!--									<option value="" >请选择</option>-->
+<!--								</select>-->
+<!--							</div>-->
+<!--							<label class="col-sm-2 control-label " >数量：</label>-->
+<!--							<div class="col-sm-2">-->
+<!--								<input id="cl1shuliang" name="cl1shuliang" class="form-control" type="text" style="height:25px">-->
+<!--							</div>-->
+<!--						</div>-->
+
+
+						<!--<label class="col-sm-2 control-label ">钢种</label>-->
+							<!--<div class="layui-input-inline col-sm-1">-->
+								<!--<select id="gangzhong" name="gangzhong" lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">-->
+									<!--<option value="" >请选择</option>-->
+									<!--&lt;!&ndash;<option th:each="c:${chanpinxinxiVO1}" th:value="${c.id}" th:text="${c.name}"></option>&ndash;&gt;-->
+								<!--</select>-->
+							<!--</div>-->
+						<!--</div>-->
+						<div class="form-group">
+						<label class="col-sm-2 control-label">材料1 </label>
+						<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+							<select id="cailiao1" name="cailiao1" lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+								<option value="" selected>请选择</option>
+								<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+							</select>
+						</div>
+						<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+						<div class="col-sm-2">
+							<input id="cl1shuliang" name="cl1shuliang" class="form-control" type="text" style="height:25px">
+						</div>
+					</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料2 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao2" name="cailiao2"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc" distinct>
+									<option value="" selected>请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl2shuliang" name="cl2shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料3 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao3" name="cailiao3"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl3shuliang" name="cl3shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料4 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao4" name="cailiao4"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl4shuliang" name="cl4shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料5 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao5" name="cailiao5"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl5shuliang" name="cl5shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料6 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao6" name="cailiao6"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl6shuliang" name="cl6shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料7 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao7" name="cailiao7"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl7shuliang" name="cl7shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料8 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao8" name="cailiao8"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl8shuliang" name="cl8shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料9 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao9" name="cailiao9"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl9shuliang" name="cl9shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料10 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao10" name="cailiao10"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl10shuliang" name="cl10shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料11 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao11" name="cailiao11"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl11shuliang" name="cl11shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料12 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao12" name="cailiao12"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl12shuliang" name="cl12shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料13 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao13" name="cailiao13"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl13shuliang" name="cl13shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料14 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao14" name="cailiao14"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl14shuliang" name="cl14shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料15 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao15" name="cailiao15"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl15shuliang" name="cl15shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料16 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao16" name="cailiao16"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl16shuliang" name="cl16shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料17 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao17" name="cailiao17"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl17shuliang" name="cl17shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料18 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao18" name="cailiao18"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl18shuliang" name="cl18shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料19 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao19" name="cailiao19"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl19shuliang" name="cl19shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">材料20 </label>
+							<div class="layui-input-inline col-sm-1" style="display: inline-block; padding: 0">
+								<select id="cailiao20" name="cailiao20"  lay-search="" style="width:80px; height: 25px; border: 1px solid #ccc">
+									<option value="" >请选择</option>
+									<option th:each="a:${wuliaoxinxiDO}" th:value="${a.id}" th:text="${a.name}"></option>
+								</select>
+							</div>
+							<label class="col-sm-4 control-label " style="text-align: right">数量：</label>
+							<div class="col-sm-2">
+								<input id="cl20shuliang" name="cl20shuliang" class="form-control" type="text" style="height:25px">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-8 col-sm-offset-3" style="text-align: right">
+								<button type="submit" class="btn btn-primary">提交</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/appjs/wuliao/gongyidan/add.js"></script>
+
+</body>
+</html>

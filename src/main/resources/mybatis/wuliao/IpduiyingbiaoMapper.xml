@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.wuliao.dao.IpduiyingbiaoDao">
+
+	<select id="get" resultType="com.bootdo.wuliao.domain.IpduiyingbiaoDO">
+		select `ID`,`IP`,`DuanKouHao`,`MingCheng`,`LeiXing`,`LiaoCangHao`,`ZhuangTai`,`BeiZhu` from tb_ipduiyingbiao where ID = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.wuliao.domain.IpduiyingbiaoDO">
+		select `ID`,`IP`,`DuanKouHao`,`MingCheng`,`LeiXing`,`LiaoCangHao`,`ZhuangTai`,`BeiZhu` from tb_ipduiyingbiao
+        <where>  
+		  		  <if test="id != null and id != ''"> and ID = #{id} </if>
+		  		  <if test="ip != null and ip != ''"> and IP = #{ip} </if>
+			      <if test="duankouhao!= null and duankouhao != ''"> and DuanKouHao = #{duankouhao} </if>
+		  		  <if test="mingcheng != null and mingcheng != ''"> and MingCheng = #{mingcheng} </if>
+		  		  <if test="leixing != null and leixing != ''"> and LeiXing = #{leixing} </if>
+		  		  <if test="liaocanghao != null and liaocanghao != ''"> and LiaoCangHao = #{liaocanghao} </if>
+		  		  <if test="zhuangtai != null and zhuangtai != ''"> and ZhuangTai = #{zhuangtai} </if>
+		  		  <if test="beizhu != null and beizhu != ''"> and BeiZhu = #{beizhu} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by ID desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from tb_ipduiyingbiao
+		 <where>  
+		  		  <if test="id != null and id != ''"> and ID = #{id} </if>
+		  		  <if test="ip != null and ip != ''"> and IP = #{ip} </if>
+			      <if test="duankouhao!= null and duankouhao != ''"> and DuanKouHao = #{duankouhao} </if>
+		  		  <if test="mingcheng != null and mingcheng != ''"> and MingCheng = #{mingcheng} </if>
+		  		  <if test="leixing != null and leixing != ''"> and LeiXing = #{leixing} </if>
+		  		  <if test="liaocanghao != null and liaocanghao != ''"> and LiaoCangHao = #{liaocanghao} </if>
+		  		  <if test="zhuangtai != null and zhuangtai != ''"> and ZhuangTai = #{zhuangtai} </if>
+		  		  <if test="beizhu != null and beizhu != ''"> and BeiZhu = #{beizhu} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.wuliao.domain.IpduiyingbiaoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into tb_ipduiyingbiao
+		(
+			`IP`,
+		    `DuanKouHao`,
+			`MingCheng`,
+			`LeiXing`, 
+			`LiaoCangHao`, 
+			`ZhuangTai`, 
+			`BeiZhu`
+		)
+		values
+		(
+			#{ip},
+		    #{duankouhao},
+			#{mingcheng},
+			#{leixing}, 
+			#{liaocanghao}, 
+			#{zhuangtai}, 
+			#{beizhu}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.wuliao.domain.IpduiyingbiaoDO">
+		update tb_ipduiyingbiao 
+		<set>
+			<if test="ip != null">`IP` = #{ip}, </if>
+			<if test="duankouhao != null">`DuanKouHao` = #{duankouhao}, </if>
+			<if test="mingcheng != null">`MingCheng` = #{mingcheng}, </if>
+			<if test="leixing != null">`LeiXing` = #{leixing}, </if>
+			<if test="liaocanghao != null">`LiaoCangHao` = #{liaocanghao}, </if>
+			<if test="zhuangtai != null">`ZhuangTai` = #{zhuangtai}, </if>
+			<if test="beizhu != null">`BeiZhu` = #{beizhu}</if>
+		</set>
+		where ID = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from tb_ipduiyingbiao where ID = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from tb_ipduiyingbiao where ID in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.wuliao.dao.ChengfenduizhaoDao">
+
+	<!-- 关联查询两张表 liangqi -->
+	<select id="list" resultType="com.bootdo.wuliao.domain.dto.ChengFenDuiZhaoDTO">
+	select tb_zhibaoshu.id zhi_id, tb_zhibaoshu.name zhi_name,tb_zhibaoshu.picihao zhi_pi_ci_hao,
+	tb_zhibaoshu.laiyuan zhi_lai_yuan,tb_zhibaoshu.riqi zhi_ri_qi,tb_zhibaoshu.changjia zhi_chang_jia, tb_zhibaoshu.baifenbi zhi_bai_fen_bi,
+		tb_huayanshi.id hua_id, tb_huayanshi.name hua_name,tb_huayanshi.picihao hua_pi_ci_hao,
+		 tb_huayanshi.laiyuan hua_lai_yuan,tb_huayanshi.riqi hua_ri_qi,tb_huayanshi.changjia hua_chang_jia,tb_huayanshi.baifenbi hua_bai_fen_bi
+    from tb_zhibaoshu,tb_huayanshi
+    where tb_zhibaoshu.name=tb_huayanshi.name and tb_zhibaoshu.picihao=tb_huayanshi.picihao and tb_zhibaoshu.riqi=tb_huayanshi.riqi and tb_zhibaoshu.changjia=tb_huayanshi.changjia;
+	 </select>
+
+
+
+	<select id="count" resultType="int">
+	select count(*)
+	from tb_zhibaoshu,tb_huayanshi
+	where  tb_zhibaoshu.name=tb_huayanshi.name and tb_zhibaoshu.picihao=tb_huayanshi.picihao and tb_zhibaoshu.riqi=tb_huayanshi.riqi and tb_zhibaoshu.changjia=tb_huayanshi.changjia  ;
+
+   </select>
+
+
+	<select id="get" resultType="com.bootdo.wuliao.domain.ChengfenduizhaoDO">
+
+	</select>
+
+</mapper>
