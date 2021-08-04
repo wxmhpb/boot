@@ -122,16 +122,6 @@ public class ChanpinxinxiController {
 //		return chanpinxinxiService.queryList();
 //	}
 
-	@GetMapping("/queryList1")
-	@ResponseBody
-	public List queryList (@RequestParam(value = "id") Integer id) {
-		//根据数据库Id查询对应的数据类型
-		List<JihaoDO> jihaoDO = chanpinxinxiService.queryList1(id);
-		if (jihaoDO == null) {
-			throw new RuntimeException("数据为空！");
-		}
-		return jihaoDO;
-	}
 
 	@GetMapping("/queryList2")
 	@ResponseBody
@@ -142,6 +132,18 @@ public class ChanpinxinxiController {
 			throw new RuntimeException("数据为空！");
 		}
 		return luciDO;
+	}
+
+	// todo
+	@GetMapping("/queryList3")
+	@ResponseBody
+	public List queryList3 (@RequestParam(value = "id") Integer id) {
+		//根据数据库Id查询对应的数据类型
+		List<JihaoDO> JihaoDO = chanpinxinxiService.queryList3(id);
+		if (JihaoDO == null) {
+			throw new RuntimeException("数据为空！");
+		}
+		return JihaoDO;
 	}
 
 }

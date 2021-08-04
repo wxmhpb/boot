@@ -43,30 +43,36 @@ function load() {
 						// pageSize, pageNumber, searchText, sortName,
 						// sortOrder.
 						// 返回false将会终止请求
+	// 					private String liaocangmingcheng;
+	// /**
+	//  * 当前品种
+	//  */
+	// private String dangqianpinzhong;
+	// private Float dangqianzongshuliang;
 						columns : [
 								{
 									checkbox : true
 								},
 																{
-									field : 'id', 
-									title : '序号'
-								},
-																{
-									field : 'luci',
+									field : 'liaocangmingcheng',
 									title : '炉次'
 								},
 																{
-									field : 'liaocanghao',
-									title : '料仓号'
+									field : 'dangqianpinzhong',
+									title : '当前品种'
 								},
 																{
-									field : 'name',
-									title : '品种'
+									field : 'dangqianzongshuliang',
+									title : '当前总数量'
 								},
-							{
-								field : 'shengyuliang',
-								title : '当前数量'
-							},
+							// 									{
+							// 							// 		field : 'name',
+							// 							// 		title : '品种'
+							// 							// 	},
+							// 							// {
+							// 							// 	field : 'shengyuliang',
+							// 							// 	title : '当前数量'
+							// 							// },
 							]
 					});
 }

@@ -30,8 +30,8 @@ public interface ChanpinxinxiDao {
 	
 	int batchRemove(Integer[] ids);
 	List<GangzhongzuDO> queryList();
-	List<JihaoDO> queryList1(Integer id);
 	List<LuciDO> queryList2(Integer id);
+	List<JihaoDO> queryList3(Integer id);
 
 
 

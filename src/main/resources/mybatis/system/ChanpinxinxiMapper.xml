@@ -26,6 +26,14 @@
 			shangjiid=#{_parameter}
 	</select>
 
+	<select id="queryList3" resultType="com.bootdo.system.domain.LuciDO" parameterType="java.lang.Integer">
+		select  C.id, C.name
+		from tb_chanpinxinxi AS C
+		where
+			shangjiid=#{_parameter}
+	</select>
+
+
 
 	<select id="list" resultType="com.bootdo.system.domain.ChanpinxinxiDO">
 		select `id`,`name`,`shangjiid` from tb_chanpinxinxi

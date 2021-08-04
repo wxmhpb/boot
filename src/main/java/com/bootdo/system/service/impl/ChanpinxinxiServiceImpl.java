@@ -60,13 +60,14 @@ public class ChanpinxinxiServiceImpl implements ChanpinxinxiService {
 		return chanpinxinxiDao.queryList();
 	}
 
-	@Override
-	public List<JihaoDO> queryList1(Integer id) {
-		return chanpinxinxiDao.queryList1(id);
-	}
 
 	@Override
 	public List<LuciDO> queryList2(Integer id) {
 		return chanpinxinxiDao.queryList2(id);
+	}
+
+	@Override
+	public List<JihaoDO> queryList3(Integer id) {
+		return chanpinxinxiDao.queryList3(id);
 	}
 }

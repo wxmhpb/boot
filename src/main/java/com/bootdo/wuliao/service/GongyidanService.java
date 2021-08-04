@@ -17,6 +17,9 @@ public interface GongyidanService {
 	GongyidanDO get(Integer id);
 	
 	List<GongyidanDO> list(Map<String, Object> map);
+
+	//新增
+	List<GongyidanDO> queryBy();
 	
 	int count(Map<String, Object> map);
 	

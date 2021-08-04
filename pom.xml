@@ -47,6 +47,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+
         <!--web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,6 +63,20 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
         </dependency>
+
+        <!--新添加-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -272,6 +287,11 @@
         <!--<version>3.1.0</version>-->
         <!--<scope>provided</scope>-->
         <!--</dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -279,6 +299,7 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -308,7 +329,7 @@
             <!--<name>aliyun nexus</name>-->
             <!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
             <!--<releases>-->
-                <!--<enabled>true</enabled>-->
+            <!--<enabled>true</enabled>-->
             <!--</releases>-->
             <!--<snapshots>-->
                 <!--<enabled>false</enabled>-->

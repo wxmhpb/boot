@@ -94,4 +94,17 @@
 		</foreach>
 	</delete>
 
+
+	<resultMap id="sssss" type="com.bootdo.wuliao.vo.ProductTotal">
+		<result column="LiaoCangMingCheng" property="liaocangmingcheng" javaType="string"></result>
+		<result column="DangQianPinZhong" property="dangqianpinzhong" javaType="string"></result>
+		<result column="ss" property="dangqianzongshuliang" javaType="Float"></result>
+	</resultMap>
+
+	<select id="selectGroup" resultMap="sssss">
+    SELECT A.LiaoCangMingCheng, A.DangQianPinZhong, SUM(A.DangQianShuLiang) ss FROM `tb_liaocangyuliangbiao` A  GROUP BY A.DangQianPinZhong,A.LiaoCangMingCheng ORDER BY SUM(A.DangQianShuLiang);
+    </select>
+
+
+
 </mapper>

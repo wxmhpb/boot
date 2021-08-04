@@ -7,6 +7,7 @@ import com.bootdo.wuliao.domain.LiaocangyuliangbiaoDO;
 import com.bootdo.wuliao.domain.WuliaoVO;
 import com.bootdo.wuliao.domain.WuliaobaobiaoDO;
 import com.bootdo.wuliao.service.WuliaobaobiaoService;
+import com.bootdo.wuliao.vo.ProductTotal;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,6 +46,12 @@ public class WuliaobaobiaoController {
     String add(){
         return "wuliao/wuliaobaobiao/add";
     }
+
+
+    //提前查询
+
+
+
 
     @GetMapping("/edit/{id}")
     @RequiresPermissions("wuliao:wuliaobaobiao:edit")

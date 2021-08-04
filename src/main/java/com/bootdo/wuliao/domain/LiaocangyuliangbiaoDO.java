@@ -13,8 +13,8 @@ import java.util.Date;
  * @date 2020-12-21 17:09:17
  */
 public class LiaocangyuliangbiaoDO implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
 	//ID
 	private Integer id;
 	//料仓号
@@ -35,6 +35,7 @@ public class LiaocangyuliangbiaoDO implements Serializable {
 	/**
 	 * 设置：ID
 	 */
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -56,18 +57,15 @@ public class LiaocangyuliangbiaoDO implements Serializable {
 	public Integer getLiaocanghao() {
 		return liaocanghao;
 	}
-	/**
-	 * 设置：料仓名称
-	 */
-	public void setLiaocangmingcheng(String liaocangmingcheng) {
-		this.liaocangmingcheng = liaocangmingcheng;
-	}
-	/**
-	 * 获取：料仓名称
-	 */
+
 	public String getLiaocangmingcheng() {
 		return liaocangmingcheng;
 	}
+
+	public void setLiaocangmingcheng(String liaocangmingcheng) {
+		this.liaocangmingcheng = liaocangmingcheng;
+	}
+
 	/**
 	 * 设置：当前品种
 	 */
